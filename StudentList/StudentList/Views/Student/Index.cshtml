@@ -1,0 +1,102 @@
+﻿@model IEnumerable<StudentList.Student>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td style="width: 150px">
+                Name<br />
+                <input type="text" id="txtName" style="width:110px" />
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 150px">
+                Address:<br />
+                <input type="text" id="txtAddress" style="width:110px" />
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 150px">
+                Address2:<br />
+                <input type="text" id="txtAddress2" style="width:110px" />
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 150px">
+                JDate:<br />
+                <input type="date" id="txtJDate" style="width:110px" />
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 150px">
+                FeesAmount:<br />
+                <input type="text" id="txtFeesAmount" style="width:110px" />
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 200px">
+                <br />
+                <input type="button" id="btnAdd" value="Add" />
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnAdd").click(function () {
+                $(document).ready(function () {
+                    //var name = ($("#txtName").val()=="");
+                    if ($("#txtName").val() == "") {
+                        alert("Name is Empty... please enter the Name ");
+                    }
+                    if ($("#txtName").val().length >= 50) {
+                        alert("give below 50 characters");
+                    }
+                    if ($("#txtAddress").val() == "") {
+                        alert("Address is Empty... please enter the Address ");
+                    }
+                    if ($("#txtAddress").val().length >= 500) {
+                        alert("give below 500 characters");
+                    }
+                    var CurrentDate = new Date();
+                    var SelectedDate = new Date(
+                        $('[id$=txtJDate]').val()
+                    );
+                    if (CurrentDate > SelectedDate) {
+                        alert("This is Previous date");
+                    }
+                    else if (SelectedDate < CurrentDate) {
+                        alert("Valid Joining date");
+                    }
+                    if ($("#txtJDate").val() == "") {
+                        alert("Enter valid date");
+                    }
+                    $("#txtFeesAmount").keydown(function (event) {
+                        if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||
+                            (event.keyCode == 65 && event.ctrlKey === true) ||
+                            (event.keyCode >= 35 && event.keyCode <= 39)) {
+                            return;
+                        }
+                        else {
+                            if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                                event.preventDefault();
+                                alert("Enter only numeric")
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,411 @@
+﻿@model IEnumerable<EmployeeApplication.Employee>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="Form using External.css">
+    <title> Member Registration </title>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+
+    <strong>Employee</strong><br><br>
+    <label>EmployeeName:  </label>
+    <input type="text" id="txtEmployeeName" autofocus placeholder="Enter Name" required style="width:110px"> <br><br>
+
+    <label> DesignationId:  </label>
+    @*<input type="text" id="txtDesignationId" style="width:110px" /><br><br>*@
+    <select class="form-control" id="txtDesignationId">
+        <option selected="selected">Select</option>
+    </select>
+    <br><br>
+
+    <label> Gender:</label>
+    <input type="radio" id="txtGender" name="gender" value="Male" checked/>Male
+    <input type="radio" id="txtGender" name="gender" value="FeMale" />Female
+    <br><br>
+
+    <label> DOB:  </label>
+    <input type="date" id="txtDOB" style="width:110px" /><br><br>
+
+    <label> EmailId:   </label>
+    <input type="email" id="txtEmailId" maxlength="100" placeholder="name@domain.com" style="width:110px" /><br><br>
+
+    <label>
+        MobileNo:
+    </label>
+    <input type="tel" id="txtMobileNo" maxlength="10" style="width:110px" /> <br><br>
+
+    <label>
+        Address:
+    </label>
+    <input type="text" id="txtAddress" style="width:110px" /><br><br>
+
+    <label>
+        Description:
+    </label>
+    <input type="text" id="txtDescription" style="width:110px" /><br><br>
+
+    <label>
+        Salary:
+    </label>
+    <input type="text" id="txtSalary" style="width:110px" /><br><br>
+
+    <label>
+        <input type="button" id="btnAdd" value="Add" />
+    </label>
+    @*<table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="width: 150px">
+                    EmployeeName<br />
+                    <input type="text" id="txtEmployeeName" style="width:110px" />
+                </td>
+                <td style="width: 150px">
+                    DesignationId:<br />
+                    <input type="text" id="txtDesignationId" style="width:110px" />
+                </td>
+                <td style="width: 150px">
+                    Gender:<br />
+                    <input type="text" id="txtGender" style="width:110px" />
+                    <input type="radio" id="txtGender" name="gnd" style="width:110px" checked />Male
+                    <input type="radio" id="txtGender" name="gnd" style="width:110px"/>Female
+                </td>
+                <td style="width: 150px">
+                    DOB:<br />
+                    <input type="date" id="txtDOB" style="width:110px" />
+                </td>
+                <td style="width: 150px">
+                    EmailId:<br />
+                    <input type="email" id="txtEmailId" style="width:110px" />
+                </td>
+                <td style="width: 150px">
+                    MobileNo:<br />
+                    <input type="tel" id="txtMobileNo" style="width:110px" />
+                </td>
+                <td style="width: 150px">
+                    Address:<br />
+                    <input type="text" id="txtAddress" style="width:110px" />
+                </td>
+                <td style="width: 150px">
+                    Description:<br />
+                    <input type="text" id="txtDescription" style="width:110px" />
+                </td>
+                <td style="width: 150px">
+                    Salary:<br />
+                    <input type="text" id="txtSalary" style="width:110px" />
+                </td>
+
+                <td style="width: 200px">
+                    <br />
+                    <input type="button" id="btnAdd" value="Add" />
+                    <input type="reset" id="btnAdd" value="Reset" />
+                </td>
+            </tr>
+        </table>*@
+    <table id="tblProducts" class="table" cellpadding="3" cellspacing="3">
+        <tr>
+            <th style="width:100px">EmployeeId</th>
+            <th style="width:100px">EmployeeName</th>
+            <th style="width:100px">DesignationId</th>
+            <th style="width:100px">Gender</th>
+            <th style="width:100px">DOB</th>
+            <th style="width:100px">EmailId</th>
+            <th style="width:100px">MobileNo</th>
+            <th style="width:100px">Address</th>
+            <th style="width:100px">Description</th>
+            <th style="width:100px">Salary</th>
+            <th></th>
+        </tr>
+        @foreach (Employee emp in Model)
+            {
+            <tr>
+                <td class="EmployeeId">
+                    <span>@emp.EmployeeId</span>
+                </td>
+                <td class="EmployeeName">
+                    <span>@emp.EmployeeName</span>
+                    <input type="text" value="@emp.EmployeeName" style="display:none" />
+                </td>
+                <td class="DesignationId">
+                    <span>@emp.DesignationId</span>
+                    <input type="text" value="@emp.DesignationId" style="display:none" />
+                </td>
+                <td class="Gender">
+                    <span>@emp.Gender</span>
+                    <input type="radio" value="@emp.Gender" style="display:none" />
+                </td>
+                <td class="DOB">
+                    <span>@emp.DOB</span>
+                    <input type="date" value="@emp.DOB" style="display:none" />
+                </td>
+                <td class="EmailId">
+                    <span>@emp.EmailId</span>
+                    <input type="email" value="@emp.EmailId" style="display:none" />
+                </td>
+                <td class="MobileNo">
+                    <span>@emp.MobileNo</span>
+                    <input type="tel" value="@emp.MobileNo" style="display:none" />
+                </td>
+                <td class="Address">
+                    <span>@emp.Address</span>
+                    <input type="text" value="@emp.Address" style="display:none" />
+                </td>
+                <td class="Description">
+                    <span>@emp.Description</span>
+                    <input type="text" value="@emp.Description" style="display:none" />
+                </td>
+                <td class="Salary">
+                    <span>@emp.Salary</span>
+                    <input type="text" value="@emp.Salary" style="display:none" />
+                </td>
+                <td>
+                    <a class="Edit" href="javascript:;">Edit</a>
+                    <a class="Update" href="javascript:;" style="display:none">Update</a>
+                    <a class="Cancel" href="javascript:;" style="display:none">Cancel</a>
+                    <a class="Delete" href="javascript:;">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            if ($("#tblProducts tr").length > 2) {
+                $("#tblProducts tr:eq(1)").remove();
+            }
+        });
+        function AppendRow(row, EmployeeId, EmployeeName, DesignationId, Gender, DOB, EmailId, MobileNo, Address, Description, Salary) {
+
+            $(".EmployeeId", row).find("span").html(EmployeeId);
+
+            $(".EmployeeName", row).find("span").html(EmployeeName);
+            $(".EmployeeName", row).find("input").val(EmployeeName);
+
+            $(".DesignationId", row).find("span").html(DesignationId);
+            $(".DesignationId", row).find("input").val(DesignationId);
+
+            $(".Gender", row).find("span").html(Gender);
+            $(".Gender", row).find("input").val(Gender);
+
+            $(".DOB", row).find("span").html(DOB);
+            $(".DOB", row).find("input").val(DOB);
+
+            $(".EmailId", row).find("span").html(EmailId);
+            $(".EmailId", row).find("input").val(EmailId);
+
+            $(".MobileNo", row).find("span").html(MobileNo);
+            $(".MobileNo", row).find("input").val(MobileNo);
+
+            $(".Address", row).find("span").html(Address);
+            $(".Address", row).find("input").val(Address);
+
+            $(".Description", row).find("span").html(Description);
+            $(".Description", row).find("input").val(Description);
+
+            $(".Salary", row).find("span").html(Salary);
+            $(".Salary", row).find("input").val(Salary);
+            $("#tblProducts").append(row);
+        };
+
+        $(document).ready(function () {
+            $("#btnAdd").click(function ()
+            {
+                if ($("#txtEmployeeName").val() == "") {
+                    alert("Name field is Empty...");
+                }
+                if ($("#txtEmployeeName").val().length >= 50) {
+                    alert("give below 50 characters");
+                }
+                if ($("#txtDesignationId").val() == "") {
+                    alert("DesignationId field is Empty...");
+                }
+                if ($("#txtDOB").val() == "")
+                {
+                    alert("Enter valid date");
+                }
+
+                var txtEmployeeName = $("#txtEmployeeName");
+                var txtDesignationId = $("#txtDesignationId").val();
+                var txtGender = $("#txtGender");
+                var txtDOB = $("#txtDOB");
+                var txtEmailId = $("#txtEmailId");
+                var txtMobileNo = $("#txtMobileNo");
+                var txtAddress = $("#txtAddress");
+                var txtDescription = $("#txtDescription");
+                var txtSalary = $("#txtSalary");
+                $.ajax({
+                    type: "POST",
+                    url: "/Employee/Create",
+                    data: '{EmployeeName: "' + txtEmployeeName.val() + '", DesignationId: "' + txtDesignationId+ '",Gender:"' + txtGender.val() + '",DOB:"' + txtDOB.val() + '",EmailId:"' + txtEmailId.val() + '",MobileNo:"' + txtMobileNo.val() + '", Address:"' + txtAddress.val() + '",Description:"' + txtDescription.val() + '",Salary:"' + txtSalary.val() + '"}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (r) {
+                        var row = $("#tblProducts tr:last-child").clone(true);
+                        AppendRow(row, r.EmployeeId, r.EmployeeName, r.DesignationId, r.Gender, r.DOB, r.EmailId, r.MobileNo, r.Address, r.Description, r.Salary);
+                        txtEmployeeName.val("");
+                        txtDesignationId.val("");
+                        txtGender.val("");
+                        txtDOB.val("");
+                        txtEmailId.val("");
+                        txtMobileNo.val("");
+                        txtAddress.val("");
+                        txtDescription.val("");
+                        txtSalary.val("");
+                    }
+                });
+            });
+        });
+        //Edit event handler.
+        $(document).ready(function () {
+            $("body").on("click", "#tblProducts .Edit", function () {
+                var row = $(this).closest("tr");
+                $("td", row).each(function () {
+                    if ($(this).find("input").length > 0) {
+                        $(this).find("input").show();
+                        $(this).find("span").hide();
+                    }
+                });
+                row.find(".Update").show();
+                row.find(".Cancel").show();
+                row.find(".Delete").hide();
+                $(this).hide();
+            });
+        });
+
+        //Update event handler.
+        $(document).ready(function () {
+            $("body").on("click", "#tblProducts .Update", function () {
+                var row = $(this).closest("tr");
+                $("td", row).each(function () {
+                    if ($(this).find("input").length > 0) {
+                        var span = $(this).find("span");
+                        var input = $(this).find("input");
+                        span.html(input.val());
+                        span.show();
+                        input.hide();
+                    }
+                });
+                row.find(".Edit").show();
+                row.find(".Delete").show();
+                row.find(".Cancel").hide();
+                $(this).hide();
+
+                var emp = {};
+                emp.EmployeeId = row.find(".EmployeeId").find("span").html();
+                emp.EmployeeName = row.find(".EmployeeName").find("span").html();
+                emp.DesignationId = row.find(".DesignationId").find("span").html();
+                emp.Gender = row.find(".Gender").find("span").html();
+                emp.DOB = row.find(".DOB").find("span").html();
+                emp.EmailId = row.find(".EmailId").find("span").html();
+                emp.MobileNo = row.find(".MobileNo").find("span").html();
+                emp.Address = row.find(".Address").find("span").html();
+                emp.Description = row.find(".Description").find("span").html();
+                emp.Salary = row.find(".Salary").find("span").html();
+                $.ajax({
+                    type: "POST",
+                    url: "/Employee/UpdateEmployee",
+                    data: '{emp:' + JSON.stringify(emp) + '}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json"
+                });
+            });
+        });
+
+        //Cancel event handler.
+        $(document).ready(function () {
+            $("body").on("click", "#tblProducts .Cancel", function () {
+                var row = $(this).closest("tr");
+                $("td", row).each(function () {
+                    if ($(this).find("input").length > 0) {
+                        var span = $(this).find("span");
+                        var input = $(this).find("input");
+                        input.val(span.html());
+                        span.show();
+                        input.hide();
+                    }
+                });
+                row.find(".Edit").show();
+                row.find(".Delete").show();
+                row.find(".Update").hide();
+                $(this).hide();
+            });
+        });
+
+        //Delete event handler.
+        $(document).ready(function () {
+            $("body").on("click", "#tblProducts .Delete", function () {
+                if (confirm("Do you want to delete this row?")) {
+                    var row = $(this).closest("tr");
+                    var EmployeeId = row.find("span").html();
+                    $.ajax({
+                        type: "POST",
+                        url: "/Employee/DeleteEmployee",
+                        data: '{EmployeeId: ' + EmployeeId + '}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            row.remove();
+                        }
+                    });
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            debugger;
+            $.ajax({
+                url: "/Employee/GetDesignation",
+                datatype: "JSON",
+                type: "Get",
+                success: function (data) {
+                    debugger;
+                    for (var i = 0; i < data.length; i++) {
+                        debugger;
+                        var option = "<option value=" + data[i].DesignationId + ">" + data[i].DesignationName + "</option>"
+                        //var opt = new Option(data[i].DesignationName);
+                        $("#txtDesignationId").append(option);
+                    }
+                }
+            });
+        });
+
+        
+
+        $("#txtSalary").keydown(function (event) {
+            if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||
+                (event.keyCode == 65 && event.ctrlKey === true) ||
+                (event.keyCode >= 35 && event.keyCode <= 39)) {
+                return;
+            }
+            else {
+                if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                    event.preventDefault();
+                    alert("Enter only numeric")
+                }
+            }
+        });
+
+        $("#txtMobileNo").keydown(function (event) {
+            if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||
+                (event.keyCode == 65 && event.ctrlKey === true) ||
+                (event.keyCode >= 35 && event.keyCode <= 39)) {
+                return;
+            }
+            else {
+                if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                    event.preventDefault();
+                    alert("Enter only numeric")
+                }
+            }
+        });
+
+        
+    </script>
+</body>
+</html>
+
